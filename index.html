@@ -5,17 +5,35 @@
     </body>
     <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-    <script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
         const root = document.getElementById("root");
-        const h3 = React.createElement("h3",{
-            onMouseEnter: () => console.log("entered")
-        },"가나다");
-        const btn = React.createElement(
-            "button",{
-            onClick: () => console.log("clicked")
-        },
-        "Click me");
-        const container = React.createElement("div",null,[h3,btn]);
-       ReactDOM.render(container,root);
+
+        // JSX 사용 (babel)
+        const Title = (
+            <h3 id="title" onMouseEnter={() => console.log("mouse entered")}>
+                Hello I am a title
+            </h3>
+        );
+        const Button = (
+            <button
+                style={{ backgroundColor: "tomato" }}
+                onClick={() => console.log("I'm clicked")}
+            >
+                Click me
+            </button>
+        );
+
+        // 기본 방식
+        // const h3 = React.createElement("h3",{
+        //     onMouseEnter: () => console.log("entered")
+        // },"가나다");
+        // const btn = React.createElement(
+        //     "button",{
+        //     onClick: () => console.log("clicked")
+        // },
+        // "Click me");
+        const container = React.createElement("div", null, [Title, Button]);
+        ReactDOM.render(container, root);
     </script>
 </html>
